@@ -19,7 +19,7 @@ function Get-WebInfo {
 	param([string] $SiteUrl)
 
 	try {
-		Connect-PnPOnline -Url $SiteUrl -UseWebLogin
+		Connect-PnPOnline -Url $SiteUrl -Interactive
 		$web = Get-PnPWeb -Includes WebTemplate, Lists, SiteLogoUrl, Language, ParentWeb, RegionalSettings, Configuration
 		$site = Get-PnPSite -Includes Owner, Usage
 		$theme = Get-PnPTheme
@@ -62,7 +62,7 @@ function Get-SiteInfo {
 
 	.PARAMETER SiteUrl
 		Site url of the webs to inspect.
-	
+
 	.PARAMETER CSVFilePath
 		CSV file path containing Site URLs of the webs to inspect.
 
@@ -128,13 +128,13 @@ function Set-WebLogo {
 		AUTHOR: Giuseppe Campanelli, suprememilanfan@gmail.com
 #>
 	param(
-		[parameter(Mandatory)][string]$ServerRelativeUrl,
+		[parameter(Mandatory)][string]$WebUrl,
 		[parameter(Mandatory)][string]$SiteLogoPath
 	)
-	
-	$web = Get-PnPWeb -Identity $ServerRelativeUrl
+
+	$web = Get-PnPWeb -Identity $WebUrl
 	Write-Output ("Setting site logo on subweb: {0}" -f $web.ServerRelativeUrl)
-	Set-PnPWeb -Web $ServerRelativeUrl -SiteLogoUrl $SiteLogoPath
+	Set-PnPWeb -SiteLogoUrl $SiteLogoPath
 }
 
 function Set-SiteLogo {
@@ -156,7 +156,7 @@ function Set-SiteLogo {
 
 	.EXAMPLE
 		Set-SiteLogo -SiteUrl "https://tenant.sharepoint.com/teams/MyTeam" -Recursion $true -SiteLogoPath "/SiteAssets/SiteLogo.png"
-	
+
 	.EXAMPLE
 		Set-SiteLogo -SiteUrl "https://tenant.sharepoint.com/teams/MyTeam" -SiteLogoPath "/SiteAssets/SiteLogo.png"
 
@@ -174,15 +174,15 @@ function Set-SiteLogo {
 	)
 
 	try {
-		Connect-PnPOnline -Url $SiteUrl -UseWebLogin
+		Connect-PnPOnline -Url $SiteUrl -Interactive
 		$rootWeb = Get-PnPWeb
 
 		# Set logo on root web
-		Set-PnPWeb -Web $rootWeb -SiteLogoUrl $SiteLogoPath
+		Set-PnPWeb -SiteLogoUrl $SiteLogoPath
 		Write-OutPut ("Setting site logo on web: {0}" -f $rootWeb.ServerRelativeUrl)
 
 		if ($Recursion -eq $true) {
-			$subwebs = Get-PnPSubWebs -Web $rootWeb -Recurse
+			$subwebs = Get-PnPSubWeb -Recurse
 			foreach ($subweb in $subwebs) {
 				Set-WebLogo($subweb.ServerRelativeUrl, $SiteLogoPath)
 			}

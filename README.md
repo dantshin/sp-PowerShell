@@ -1,7 +1,7 @@
 # sp-PowerShell
 
 [PowerShellRef]: https://docs.microsoft.com/en-us/powershell/
-[PnPPowerShell]: https://docs.microsoft.com/en-us/powershell/sharepoint/sharepoint-online/connect-sharepoint-online?view=sharepoint-ps
+[PnPPowerShell]: https://pnp.github.io/powershell/
 
 `sp-PowerShell` is a collection of scripts that perform various operations on SharePoint sites.
 
@@ -12,12 +12,13 @@
 
 ### Note
 
-Does not currently support PowerShell 7 due to issues that pertain to PnP-PowerShell, which is being tracked [here](https://github.com/pnp/PnP-PowerShell/issues/2595).
+A [previous issue where PowerShell 7 was not supported](https://github.com/pnp/PnP-PowerShell/issues/2595) has now been resolved as we moved from Windows PnP PowerShell to PnP-PowerShell.
 
 ### Installing
 
 * Clone repository to corresponding [PowerShell Modules location](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/installing-a-powershell-module).
 * Run `Import-Module sp-PowerShell` and you are ready to go!
+ * This might look more like `Import-Module .\sp-PowerShell.psd1`
 
 ## Authors
 

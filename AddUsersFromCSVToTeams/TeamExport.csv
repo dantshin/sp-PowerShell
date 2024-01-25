@@ -1,0 +1,8 @@
+#TYPE Microsoft.TeamsCmdlets.PowerShell.Custom.GetTeamUser+GetTeamUserResponse
+"UserId","User","Name","Role"
+"ada2a896-29f2-4d22-ba27-bbcefd945ea8","daniel.tshin@undp.org","Daniel TSHIN","owner"
+"6d267c2e-303e-42ba-a7eb-9f460dc34aa2","mohsin.khan@unv.org","Mohsin Khan","member"
+"fdc8e185-d73c-44a6-bcc9-f37bcc6882fa","bodjnoud_un.org#EXT#@undp.onmicrosoft.com","bodjnoud","guest"
+"819eac81-b6dc-4a75-8673-54e152c92525","M.Culver_iaea.org#EXT#@undp.onmicrosoft.com","CULVER, Melanie","guest"
+"eb2c254b-3627-4c30-9a27-62d7ab47f803","A.Scanlon_iaea.org#EXT#@undp.onmicrosoft.com","SCANLON, Anne","guest"
+"2f801702-e9e8-4f27-9c56-313b7ce477e3","L.E.LOPEZ-PONS_iaea.org#EXT#@undp.onmicrosoft.com","LOPEZ PONS, Luis Enrique","guest"
