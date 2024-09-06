@@ -5,9 +5,11 @@
 	.DESCRIPTION
 		Deploy-CPMSSPOArchiveSites creates a set of SPO archival sites from CSV input file for CPMS sites that are living inside legacy Intranet
 
-	.PARAMETER
+	.PARAMETER AdminUrl
 		AdminUrl of SharePoint for the tenant
+	.PARAMETER RootsiteUrl
 		RootsiteUrl of the tenant's SharePoint instance
+	.PARAMETER InputCSVFile
 		InputCSVFile containing the list of sites to create
 
 	.EXAMPLE

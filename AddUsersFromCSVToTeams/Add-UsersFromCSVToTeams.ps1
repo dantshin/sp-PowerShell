@@ -74,7 +74,7 @@ param(
 
         try {
 			$getTeam = Get-Team | Where-Object {$_.GroupID -eq $groupID}
-			if ($getTeam -ne $null)
+			if ($null -ne $getTeam)
 			{
 				$users = Import-Csv -Path $userImportFile
 				foreach($user in $users)
